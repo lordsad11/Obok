@@ -7,7 +7,7 @@ from JarvisRobo import telethn as client
 
 spam_chats = []
 
-@client.on(events.NewMessage(pattern=r"^(@tagall|@all|/tagall|@mention) ?(.*)"))
+@client.on(events.NewMessage(pattern=r"^(/tagall) ?(.*)"))
 async def mention_all(event):
     chat_id = event.chat_id
 
@@ -58,7 +58,7 @@ async def mention_all(event):
 
     spam_chats.remove(chat_id)
 
-@client.on(events.NewMessage(pattern=r"^/cancel$"))
+@client.on(events.NewMessage(pattern=r"^/cancel"))
 async def cancel_spam(event):
     if event.chat_id not in spam_chats:
         return await event.respond("There is no process going on.")
@@ -81,5 +81,5 @@ __mod_name__ = "Tᴀɢᴀʟʟ"
 __help__ = """
 ──「  ᴏɴʟʏ ғᴏʀ ᴀᴅᴍɪɴs 」──
 
-❍ /tagall or @all '(ʀᴇᴘʟʏ ᴛᴏ ᴍᴇssᴀɢᴇ ᴏʀ ᴀᴅᴅ ᴀɴᴏᴛʜᴇʀ ᴍᴇssᴀɢᴇ) ᴛᴏ ᴍᴇɴᴛɪᴏɴ ᴀʟʟ ᴍᴇᴍʙᴇʀs ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ, ᴡɪᴛʜᴏᴜᴛ ᴇxᴄᴇᴘᴛɪᴏɴ.'
+❍ /tagall '(ʀᴇᴘʟʏ ᴛᴏ ᴍᴇssᴀɢᴇ ᴏʀ ᴀᴅᴅ ᴀɴᴏᴛʜᴇʀ ᴍᴇssᴀɢᴇ) ᴛᴏ ᴍᴇɴᴛɪᴏɴ ᴀʟʟ ᴍᴇᴍʙᴇʀs ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ, ᴡɪᴛʜᴏᴜᴛ ᴇxᴄᴇᴘᴛɪᴏɴ.'
 """
